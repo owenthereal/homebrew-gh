@@ -26,7 +26,7 @@ class Gh < Formula
   end
 
   def caveats; <<-EOS.undent
-  To upgrade gh, run `brew upgrade https://raw.github.com/jingweno/gh/master/homebrew/gh.rb`
+  To upgrade gh, run `brew update` and `brew upgrade gh`
 
   More information here: https://github.com/jingweno/gh/blob/master/README.md
     EOS
