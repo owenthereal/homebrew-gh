@@ -8,14 +8,14 @@ class Gh < Formula
            "386"
          end
   SHA1 = if MacOS.prefer_64_bit?
-           "d7f7f30703ce9a24f9c588cb3d7df5d727c11e10"
+           "d0c97b982a162ee63eebabcb8ef602488018b45b"
          else
-           "c297a727b430864782307afdc87863bd8da23f45 "
+           "8dbe59194b5656b810ea0bd7c01f233e5579cccb"
          end
 
   homepage "https://github.com/jingweno/gh"
   head "https://github.com/jingweno/gh.git"
-  url "https://github.com/jingweno/gh/releases/download/v#{VERSION}/gh_#{VERSION}-snapshot_darwin_#{ARCH}.zip"
+  url "https://github.com/jingweno/gh/releases/download/v#{VERSION}/gh_#{VERSION}_darwin_#{ARCH}.zip"
   sha1 SHA1
   version VERSION
 
