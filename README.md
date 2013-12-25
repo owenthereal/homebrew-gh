@@ -11,7 +11,7 @@ can `brew install jingweno/gh/gh`.
 You can also install via URL:
 
 ```
-brew install https://raw.github.com/jingweno/gh/master/gh.rb
+brew install https://raw.github.com/jingweno/homebrew-gh/master/gh.rb
 ```
 
 Docs
