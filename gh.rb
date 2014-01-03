@@ -12,13 +12,19 @@ class Gh < Formula
 
   depends_on "go" => :build
 
+  bottle do
+    prefix '/opt/boxen/homebrew'
+    cellar '/opt/boxen/homebrew/Cellar'
+    sha1 '9696acadba837e002405e6605a6902766942f09c' => :mavericks
+  end
+
   def install
     gopath = ENV["GOPATH"] = Dir.mktmpdir("gh-")
     ENV["PATH"] = "#{File.join(gopath, "bin")}:#{ENV["PATH"]}"
 
     gh_source_dir = File.join(gopath, "src", "github.com", "jingweno", "gh")
     FileUtils.mkdir_p gh_source_dir
-    FileUtils.cp_r File.join("#{FileUtils.pwd}", "."), gh_source_dir
+    FileUtils.cp_r File.join(FileUtils.pwd, "."), gh_source_dir
 
     # TODO: call script/build after 1.0.0
     system "script/bootstrap"
