@@ -3,7 +3,10 @@ homebrew-gh
 
 How do I install gh?
 --------------------------------
-Just `brew tap jingweno/gh` and then `brew install <formula>`.
+Just `brew tap jingweno/gh` and then `brew install gh`.
+
+To build `gh` from source, type `brew install --build-from-source gh`.
+You can also build from the latest head with `brew install --build-from-source --HEAD gh`.
 
 If the formula conflicts with one from mxcl/master or another tap, you
 can `brew install jingweno/gh/gh`.
