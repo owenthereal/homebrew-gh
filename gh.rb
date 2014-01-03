@@ -13,16 +13,15 @@ class Gh < Formula
   depends_on "go" => :build
 
   def install
-    gopath = ENV["GOPATH"] = Dir.mktmpdir("gh-")
+    gopath = Dir.mktmpdir("gh-")
+    ENV["GOPATH"] = "#{gopath}:#{File.join(FileUtils.pwd, "Godeps", "_workspace")}"
     ENV["PATH"] = "#{File.join(gopath, "bin")}:#{ENV["PATH"]}"
 
     gh_source_dir = File.join(gopath, "src", "github.com", "jingweno", "gh")
     FileUtils.mkdir_p gh_source_dir
     FileUtils.cp_r File.join(FileUtils.pwd, "."), gh_source_dir
 
-    # TODO: call script/build after 1.0.0
-    system "script/bootstrap"
-    system "godep", "go", "build", "-o", "gh"
+    system "go", "build", "-o", "gh"
 
     bin.install "gh"
     bash_completion.install "etc/gh.bash_completion.sh"
