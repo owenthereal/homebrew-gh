@@ -14,15 +14,15 @@ class Gh < Formula
 
   def install
     gopath = ENV["GOPATH"] = Dir.mktmpdir("gh-")
+    ENV["PATH"] = "#{File.join(gopath, "bin")}:#{ENV["PATH"]}"
 
     gh_source_dir = File.join(gopath, "src", "github.com", "jingweno", "gh")
     FileUtils.mkdir_p gh_source_dir
     FileUtils.cp_r File.join("#{FileUtils.pwd}", "."), gh_source_dir
 
-    # TODO: encapsulate in a script after 1.0.0
+    # TODO: call script/build after 1.0.0
     system "script/bootstrap"
-    godep =  File.join(ENV["GOPATH"], "bin", "godep")
-    system godep, "go", "build", "-o", "gh"
+    system "godep", "go", "build", "-o", "gh"
 
     bin.install "gh"
     bash_completion.install "etc/gh.bash_completion.sh"
