@@ -3,12 +3,20 @@ require "tmpdir"
 
 class Gh < Formula
   VERSION = "1.0.0"
+  SOURCE_SHA1 = "f8a1b726f0b7f7a263004628e1ebc2828aad4b2a"
+  BOTTLE_SHA1 = "005547557e9c0290e561d2238996bb96cff9eb78"
 
   homepage "https://github.com/jingweno/gh"
-  head "https://github.com/jingweno/gh.git"
   url "https://github.com/jingweno/gh/archive/v#{VERSION}.zip"
-  sha1 "f8a1b726f0b7f7a263004628e1ebc2828aad4b2a"
-  version VERSION
+  sha1 SOURCE_SHA1
+  head "https://github.com/jingweno/gh.git"
+
+  bottle do
+    root_url "https://github.com/jingweno/gh/releases/download/v#{VERSION}"
+    prefix :any
+    cellar :any
+    sha1 BOTTLE_SHA1 => :mavericks
+  end
 
   depends_on "go" => :build
 
