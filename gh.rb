@@ -20,6 +20,8 @@ class Gh < Formula
 
   depends_on "go" => :build
 
+  option 'without-completions', 'Disable bash/zsh completions'
+
   def install
     gopath = Dir.mktmpdir("gh-")
     ENV["GOPATH"] = "#{gopath}:#{File.join(FileUtils.pwd, "Godeps", "_workspace")}"
@@ -31,8 +33,11 @@ class Gh < Formula
     system "go", "build", "-o", "gh"
 
     bin.install "gh"
-    bash_completion.install "etc/gh.bash_completion.sh"
-    zsh_completion.install "etc/gh.zsh_completion" => "_gh"
+
+    if build.with? 'completions'
+      bash_completion.install "etc/gh.bash_completion.sh"
+      zsh_completion.install "etc/gh.zsh_completion" => "_gh"
+    end
   end
 
   def caveats; <<-EOS.undent
