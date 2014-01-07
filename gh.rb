@@ -23,14 +23,13 @@ class Gh < Formula
   option 'without-completions', 'Disable bash/zsh completions'
 
   def install
-    gopath = Dir.mktmpdir("gh-")
-    ENV["GOPATH"] = "#{gopath}:#{File.join(FileUtils.pwd, "Godeps", "_workspace")}"
-
-    gh_source_dir = File.join(gopath, "src", "github.com", "jingweno", "gh")
-    FileUtils.mkdir_p gh_source_dir
-    FileUtils.cp_r File.join(FileUtils.pwd, "."), gh_source_dir
-
-    system "go", "build", "-o", "gh"
+    if File.exists?("script/make")
+      system "script/make"
+    else
+      # Remove it after the big bang release
+      # https://github.com/jingweno/gh/issues/145
+      legacy_build
+    end
 
     bin.install "gh"
 
@@ -49,5 +48,18 @@ class Gh < Formula
 
   test do
     assert_equal VERSION, `#{bin}/gh version`.split.last
+  end
+
+  private
+
+  def legacy_build
+    gopath = Dir.mktmpdir("gh-")
+    ENV["GOPATH"] = "#{gopath}:#{File.join(FileUtils.pwd, "Godeps", "_workspace")}"
+
+    gh_source_dir = File.join(gopath, "src", "github.com", "jingweno", "gh")
+    FileUtils.mkdir_p gh_source_dir
+    FileUtils.cp_r File.join(FileUtils.pwd, "."), gh_source_dir
+
+    system "go", "build", "-o", "gh"
   end
 end
