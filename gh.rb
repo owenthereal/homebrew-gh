@@ -23,7 +23,6 @@ class Gh < Formula
   def install
     gopath = Dir.mktmpdir("gh-")
     ENV["GOPATH"] = "#{gopath}:#{File.join(FileUtils.pwd, "Godeps", "_workspace")}"
-    ENV["PATH"] = "#{File.join(gopath, "bin")}:#{ENV["PATH"]}"
 
     gh_source_dir = File.join(gopath, "src", "github.com", "jingweno", "gh")
     FileUtils.mkdir_p gh_source_dir
