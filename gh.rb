@@ -3,8 +3,8 @@ require "tmpdir"
 
 class Gh < Formula
   VERSION = "2.0.0"
-  SOURCE_SHA1 = "f8a1b726f0b7f7a263004628e1ebc2828aad4b2a"
-  BOTTLE_SHA1 = "005547557e9c0290e561d2238996bb96cff9eb78"
+  SOURCE_SHA1 = "ae44a538ca648efe1914d9ffb1af5ab23e2d879e"
+  BOTTLE_SHA1 = "ae44a538ca648efe1914d9ffb1af5ab23e2d879e"
 
   homepage "https://github.com/jingweno/gh"
   url "https://github.com/jingweno/gh/archive/v#{VERSION}.zip"
