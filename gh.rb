@@ -2,7 +2,7 @@ require "formula"
 require "tmpdir"
 
 class Gh < Formula
-  VERSION = "1.0.0"
+  VERSION = "2.0.0"
   SOURCE_SHA1 = "f8a1b726f0b7f7a263004628e1ebc2828aad4b2a"
   BOTTLE_SHA1 = "005547557e9c0290e561d2238996bb96cff9eb78"
 
