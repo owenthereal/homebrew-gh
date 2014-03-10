@@ -3,7 +3,7 @@ homebrew-gh
 
 How do I install gh?
 --------------------------------
-Just `brew tap jingweno/gh` and then `brew install gh`.
+Just `brew tap jingweno/gh` and then `brew install gh` (or `brew install jingweno/gh/gh`).
 
 To build `gh` from source, type `brew install --build-from-source gh`.
 You can also build from the latest head with `brew install --build-from-source --HEAD gh`.
