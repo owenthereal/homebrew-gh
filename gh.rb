@@ -29,6 +29,9 @@ class Gh < Formula
       bash_completion.install "etc/gh.bash_completion.sh"
       zsh_completion.install "etc/gh.zsh_completion" => "_gh"
     end
+
+    # disable autoupdate when installing through homebrew
+    system "git config --global gh.autoUpdate never"
   end
 
   def caveats; <<-EOS.undent
